@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <script src="skillswap-functions.js" defer></script>
+    <script src="script.js" defer></script>
+    <title>Skill Swap</title>
+</head>
+<body>
+    <header class="site-header">
+        <a class="site-name" href="#home">Skill Swap</a>
+        <nav aria-label="Main navigation">
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#browse-skills">Browse Skills</a></li>
+                <li><a href="#offer-skills">Offer Skills</a></li>
+                <li><a href="#about">About</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="page-content">
+        <section class="hero" id="home" aria-labelledby="hero-heading">
+            <h1 id="hero-heading">Share your skills. Learn from others.</h1>
+            <p>Connect with people to teach what you know and discover something new.</p>
+            <a class="hero-link" href="#browse-skills">Explore skills</a>
+        </section>
+
+        <section class="content-section" id="browse-skills" aria-labelledby="offerings-heading">
+            <h2 id="offerings-heading">Skill offerings</h2>
+            <p class="section-intro">Explore skills shared by the Skill Swap community.</p>
+            <div class="category-filters" role="group" aria-label="Filter skills by category">
+                <button class="category-filter is-active" type="button" data-category="All" aria-pressed="true">All</button>
+                <button class="category-filter" type="button" data-category="Programming" aria-pressed="false">Programming</button>
+                <button class="category-filter" type="button" data-category="Music" aria-pressed="false">Music</button>
+                <button class="category-filter" type="button" data-category="Career" aria-pressed="false">Career</button>
+            </div>
+            <p id="skill-count" aria-live="polite">5 skills found.</p>
+            <div class="skill-grid">
+                <article class="skill-card" data-category="Music" data-price="20">
+                    <h3>Beginner Guitar</h3>
+                    <p>Learn basic chords, strumming, and how to play your first songs.</p>
+                    <p class="skill-provider">Offered by Jordan Lee</p>
+                    <p class="skill-price">$20 per lesson</p>
+                    <button class="skill-toggle" type="button" aria-expanded="false" aria-controls="guitar-details">More about this skill</button>
+                    <p class="skill-details" id="guitar-details" hidden>One-on-one, 45-minute lessons for beginners. Bring your own guitar.</p>
+                </article>
+                <article class="skill-card" data-category="Other" data-price="15">
+                    <h3>Conversational Spanish</h3>
+                    <p>Build confidence speaking Spanish through relaxed conversation practice.</p>
+                    <p class="skill-provider">Offered by Sofia Martinez</p>
+                    <p class="skill-price">$15 per session</p>
+                    <button class="skill-toggle" type="button" aria-expanded="false" aria-controls="spanish-details">More about this skill</button>
+                    <p class="skill-details" id="spanish-details" hidden>Practice at your pace with topics tailored to your interests and experience.</p>
+                </article>
+                <article class="skill-card" data-category="Programming" data-price="25">
+                    <h3>Introduction to Coding</h3>
+                    <p>Get started with HTML and CSS by building a simple web page.</p>
+                    <p class="skill-provider">Offered by Alex Chen</p>
+                    <p class="skill-price">$25 per lesson</p>
+                    <button class="skill-toggle" type="button" aria-expanded="false" aria-controls="coding-details">More about this skill</button>
+                    <p class="skill-details" id="coding-details" hidden>Bring a laptop for a hands-on introduction to the building blocks of the web.</p>
+                </article>
+                <article class="skill-card" data-category="Other" data-price="18">
+                    <h3>Watercolor Basics</h3>
+                    <p>Practice color mixing and simple watercolor techniques.</p>
+                    <p class="skill-provider">Offered by Morgan Rivera</p>
+                    <p class="skill-price">$18 per session</p>
+                    <button class="skill-toggle" type="button" aria-expanded="false" aria-controls="watercolor-details">More about this skill</button>
+                    <p class="skill-details" id="watercolor-details" hidden>A beginner-friendly session covering materials, washes, and a small painting.</p>
+                </article>
+                <article class="skill-card" data-category="Career" data-price="0">
+                    <h3>Resume Review</h3>
+                    <p>Get practical feedback to make your resume clearer and more effective.</p>
+                    <p class="skill-provider">Offered by Taylor Morgan</p>
+                    <p class="skill-price">Free session</p>
+                    <button class="skill-toggle" type="button" aria-expanded="false" aria-controls="resume-details">More about this skill</button>
+                    <p class="skill-details" id="resume-details" hidden>Bring a current resume draft and leave with focused suggestions for your next revision.</p>
+                </article>
+            </div>
+        </section>
+
+        <section class="content-section" id="cost-calculator" aria-labelledby="cost-calculator-heading">
+            <h2 id="cost-calculator-heading">Calculate lesson cost</h2>
+            <p>Enter an hourly rate and the number of hours to estimate the total.</p>
+            <form id="cost-calculator-form" class="calculator-form">
+                <div class="form-field">
+                    <label for="hourly-rate">Hourly rate ($)</label>
+                    <input id="hourly-rate" type="number" min="0" step="0.01" required>
+                </div>
+                <div class="form-field">
+                    <label for="lesson-hours">Hours</label>
+                    <input id="lesson-hours" type="number" min="0" step="any" required>
+                </div>
+                <button class="calculator-submit" type="submit">Calculate total</button>
+            </form>
+            <p id="cost-calculator-result" aria-live="polite">Enter a rate and hours to calculate your total.</p>
+        </section>
+
+        <section class="content-section" id="skill-matcher" aria-labelledby="skill-matcher-heading">
+            <h2 id="skill-matcher-heading">Find My Match</h2>
+            <p>Choose a category and maximum price to find a skill that fits your needs.</p>
+            <form id="skill-matcher-form" class="calculator-form">
+                <div class="form-field">
+                    <label for="match-category">Category preference</label>
+                    <select id="match-category" required>
+                        <option value="" selected disabled>Select a category</option>
+                        <option value="Programming">Programming</option>
+                        <option value="Music">Music</option>
+                        <option value="Career">Career</option>
+                    </select>
+                </div>
+                <div class="form-field">
+                    <label for="match-max-price">Maximum price ($)</label>
+                    <input id="match-max-price" type="number" min="0" step="0.01" value="30" required>
+                </div>
+                <button class="calculator-submit" type="submit">Find My Match</button>
+            </form>
+            <ul id="skill-match-results" aria-live="polite"></ul>
+        </section>
+
+        <section class="content-section" id="offer-skills" aria-labelledby="offer-skills-heading">
+            <h2 id="offer-skills-heading">Offer a skill</h2>
+            <p>Information about sharing your skills will appear here soon.</p>
+        </section>
+
+        <section class="content-section" id="about" aria-labelledby="about-heading">
+            <h2 id="about-heading">About Skill Swap</h2>
+            <p>Skill Swap helps people learn from one another by sharing what they know.</p>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <p>&copy; 2026 Skill Swap</p>
+    </footer>
+</body>
+</html>
